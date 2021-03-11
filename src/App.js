@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import LandingMenu from "./components/LandingMenu/LandingMenu"
+import Typing from "./components/Typing/Typing"
+import Phonics from "./components/Phonics/Phonics"
+import WordsAndPhrases from "./components/WordsAndPhrases/WordsAndPhrases"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header></header>
+      <div className="main-content">
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={LandingMenu} />
+            <Route path="/phonics" component={Phonics} />
+            <Route path="/typing" component={Typing} />
+            <Route path="/words-and-phrases" component={WordsAndPhrases} />
+          </Switch>
+      </BrowserRouter>
+      </div>
+      <footer>
+        <span>
+          © idk-what-its-called 2021
+        </span>
+      </footer>
     </div>
   );
 }
