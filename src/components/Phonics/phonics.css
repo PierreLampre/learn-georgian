@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.game {
+    justify-content: space-evenly;
+}
+
 .checkboxes {
     display: grid;
 	grid-template-rows: repeat(4, 1fr);
@@ -23,7 +27,47 @@
     color: var(--purple-300);
 }
 
-.setup-btn {
-    height: 30px;
-    width: 200px;
+.play-btn {
+    width: 100px;
+    height: 75px;
+    margin: 0 48px;
+    color: ghostwhite;
+    background: var(--purple-150);
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px;
 }
+
+.play-btn:hover {
+    cursor: pointer;
+}
+
+.answers {
+    max-width: 376px;
+}
+
+.char-btn {
+    font-size: 32px;
+    width: 70px;
+    height: 70px;
+    margin: 12px;
+    border-radius: 12px;
+    transition: all ease-in-out 0.3s;
+}
+
+.char-btn:hover {
+    cursor: pointer;
+    background: #C8C8C8;
+}
+
+.button-box {
+    display: flex;
+}
+
+.thumbs-up, .thumbs-down {
+    width: 75px;
+    height: 75px;
+    opacity: 0;
+}
+

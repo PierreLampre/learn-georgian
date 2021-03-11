@@ -21,7 +21,7 @@ function App() {
       </div>
       <footer>
         <span>
-          © idk-what-its-called 2021
+          © Learn Georgian 2021
         </span>
       </footer>
     </div>
