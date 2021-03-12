@@ -9,6 +9,7 @@ const Phonics = () => {
     const [setup, setSetup] = useState(true);
     const [chosenChars, setChosenChars] = useState([]);
     const [playBtnBool, setPlayBtnBool] = useState(0);
+    let btnClassToggle;
 
     const charArr = [
         { char: "ა" }, { char: "ბ" }, { char: "გ" }, { char: "დ" }, { char: "ე" }, { char: "ვ" }, { char: "ზ" }, { char: "თ" }, { char: "ი" },
@@ -25,7 +26,13 @@ const Phonics = () => {
         }
     }
 
-    console.log(chosenChars);
+    if(chosenChars.length <= 12) {
+        btnClassToggle = "char-btn lg";
+    } else if (chosenChars.length <= 25) {
+        btnClassToggle = "char-btn md";
+    } else if (chosenChars.length > 25) {
+        btnClassToggle = "char-btn sm";
+    }
 
     function toGame() {
         setSetup(false);
@@ -74,7 +81,11 @@ const Phonics = () => {
 
             <div id="answers" className="answers">
                 {chosenChars.map(el => (
-                    <button className="char-btn">{el}</button>
+                    <button 
+                        className={btnClassToggle}
+                    >
+                        {el}
+                    </button>
                 ))}
             </div>
                 <button 
