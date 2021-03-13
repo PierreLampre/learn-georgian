@@ -15,9 +15,9 @@ const Letter = ({ letter, add, remove }) => {
     }
 
     return (
-        <div className={!bool ? "check-box" : "check-box chosen"} onClick={() => toggleSelection()}>
+        <button className={!bool ? "check-box" : "check-box chosen"} onClick={() => toggleSelection()}>
             {letter}
-        </div>
+        </button>
     )
 }
 

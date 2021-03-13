@@ -35,8 +35,6 @@ const Phonics = () => {
         setChosenChars(chosenChars.filter(char => char !== letter)); 
     }
 
-    console.log(chosenChars)
-
     if(chosenChars.length <= 12) {
         btnClassToggle = "char-btn lg";
     } else if (chosenChars.length <= 25) {
@@ -81,7 +79,7 @@ const Phonics = () => {
                 <img className="thumbs-up" src={thumbsUp} alt="thumbs up, correct answer" />
                 <button type="button" className="play-btn" id="playButton" value="playButton"
                     onClick={() => playBtnPlus()}>
-                    <label for="playButton" />Play</button>
+                    <label htmlFor="playButton" />Play</button>
                 <img className="thumbs-down" src={thumbsDown} alt="thumbs down, try again" />
             </div>
 
@@ -91,6 +89,7 @@ const Phonics = () => {
                 {chosenChars.map(el => (
                     <button 
                         className={btnClassToggle}
+                        key={el + "1"}
                     >
                         {el}
                     </button>
