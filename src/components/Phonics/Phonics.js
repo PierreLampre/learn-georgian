@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import StartButton from "./StartButton"
 import Letter from "./Letter"
+import { charArr } from "./charObjs"
 import thumbsUp from "./img/thumbs-up.svg"
 import thumbsDown from "./img/thumbs-down.svg"
 import "./phonics.css"
@@ -11,21 +12,6 @@ const Phonics = () => {
     const [chosenChars, setChosenChars] = useState([]);
     const [playBtnBool, setPlayBtnBool] = useState(0);
     let btnClassToggle;
-
-    const charArr = [
-        { char: "ა" }, { char: "ბ" }, { char: "გ" }, { char: "დ" }, { char: "ე" }, { char: "ვ" }, { char: "ზ" }, { char: "თ" }, { char: "ი" },
-        { char: "კ" }, { char: "ლ" }, { char: "მ" }, { char: "ნ" }, { char: "ო" }, { char: "პ" }, { char: "ჟ" }, { char: "რ" }, { char: "ს" }, { char: "ტ" },
-        { char: "უ" }, { char: "ფ" }, { char: "ქ" }, { char: "ღ" }, { char: "ყ" }, { char: "შ" }, { char: "ჩ" }, { char: "ც" }, { char: "ძ" }, { char: "წ" },
-        { char: "ჭ" }, { char: "ხ" }, { char: "ჯ" }, { char: "ჰ" }
-    ]
-
-    // function handleChange(e) {
-    //     if(e.target.checked === true) {
-    //         setChosenChars(chosenChars => [...chosenChars, e.target.value]);
-    //     } else {
-    //         setChosenChars(chosenChars.filter(char => char !== e.target.value));
-    //     }
-    // }
 
     function add(letter) {
         setChosenChars(chosenChars => [...chosenChars, letter]);
@@ -55,6 +41,7 @@ const Phonics = () => {
 
     function playBtnPlus() {
         setPlayBtnBool(1);
+        charArr[2].sound.play();
     }
 
     return (
