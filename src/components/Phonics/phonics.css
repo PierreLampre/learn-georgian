@@ -27,11 +27,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.check-box > label {
+    transition: all ease-in-out 0.3s;
     font-size: 24px;
     color: var(--purple-300);
+    border-radius: 8px;
+}
+
+.check-box:hover {
+    cursor: pointer;
+}
+
+.chosen {
+    color: ghostwhite;
+    background: var(--purple-100);
+    border: 1px solid black;
 }
 
 .play-btn {

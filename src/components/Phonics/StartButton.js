@@ -11,8 +11,6 @@ const StartButton = ({ toggle, label, f }) => {
         theStyle = "disabled-btn"
     }
 
-    console.log(toggle);
-
     let text = label
 
     return (

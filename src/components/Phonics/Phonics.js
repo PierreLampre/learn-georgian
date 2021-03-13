@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import StartButton from "./StartButton"
+import Letter from "./Letter"
 import thumbsUp from "./img/thumbs-up.svg"
 import thumbsDown from "./img/thumbs-down.svg"
 import "./phonics.css"
@@ -18,13 +19,23 @@ const Phonics = () => {
         { char: "ჭ" }, { char: "ხ" }, { char: "ჯ" }, { char: "ჰ" }
     ]
 
-    function handleChange(e) {
-        if(e.target.checked === true) {
-            setChosenChars(chosenChars => [...chosenChars, e.target.value]);
-        } else {
-            setChosenChars(chosenChars.filter(char => char !== e.target.value));
-        }
+    // function handleChange(e) {
+    //     if(e.target.checked === true) {
+    //         setChosenChars(chosenChars => [...chosenChars, e.target.value]);
+    //     } else {
+    //         setChosenChars(chosenChars.filter(char => char !== e.target.value));
+    //     }
+    // }
+
+    function add(letter) {
+        setChosenChars(chosenChars => [...chosenChars, letter]);
     }
+
+    function remove(letter) {
+        setChosenChars(chosenChars.filter(char => char !== letter)); 
+    }
+
+    console.log(chosenChars)
 
     if(chosenChars.length <= 12) {
         btnClassToggle = "char-btn lg";
@@ -51,14 +62,11 @@ const Phonics = () => {
     return (
     <>
     {setup ? <div className="phonics">
-            <h1 className="logo">Which letters do you want to practice?</h1>
+            <h2 className="logo">Which letters do you want to practice?</h2>
 
             <div className="checkboxes">
                 {charArr.map(el => (
-                    <div className="check-box" key={el.char}>
-                        <input type="checkbox" className="letters" value={el.char} onChange={(e) => handleChange(e)} />
-                        <label htmlFor={el.char}>{el.char}</label>
-                    </div>
+                    <Letter key={el.char} letter={el.char} add={add} remove={remove} />
                 ))}
             </div>
             <StartButton 
