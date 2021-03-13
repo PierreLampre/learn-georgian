@@ -105,3 +105,15 @@
     opacity: 0;
 }
 
+@media screen and (max-width: 501px) {
+
+    .phonics {
+        padding: 0 12px;
+    }
+
+    .logo {
+        text-align: center;
+    }
+
+}
+

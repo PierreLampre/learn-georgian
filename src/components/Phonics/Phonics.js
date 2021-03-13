@@ -10,7 +10,9 @@ const Phonics = () => {
 
     const [setup, setSetup] = useState(true);
     const [chosenChars, setChosenChars] = useState([]);
-    const [playBtnBool, setPlayBtnBool] = useState(0);
+    const [playBtnMsgBool, setPlayBtnMsgBool] = useState(0);
+    const [playBtnSoundBool, setPlayBtnSoundBool] = useState(false);
+    const [currentTestSound, setCurrentTestSound] = useState(undefined);
     let btnClassToggle;
 
     function add(letter) {
@@ -29,19 +31,41 @@ const Phonics = () => {
         btnClassToggle = "char-btn sm";
     }
 
-    function toGame() {
-        setSetup(false);
-    }
-
     function toSetup() {
         setSetup(true);
         setChosenChars([]);
-        setPlayBtnBool(0);
+        setPlayBtnMsgBool(0);
     }
 
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateRandomSound(bool) {
+
+        if(!bool) {
+            let randomSoundIndex = getRndInteger(0, chosenChars.length - 1);
+
+            let randomLetter = chosenChars[randomSoundIndex];
+
+            for (let i = 0; i < charArr.length; i++) {
+                if(randomLetter === charArr[i].char) {
+                    setCurrentTestSound(charArr[i].sound);
+                }
+            }
+        }   
+    }
+
+    function toGame() {
+        setSetup(false);
+        generateRandomSound(playBtnSoundBool);
+    }
+
+    console.log(currentTestSound);
+
     function playBtnPlus() {
-        setPlayBtnBool(1);
-        charArr[2].sound.play();
+        setPlayBtnMsgBool(1);
+        currentTestSound.play();
     }
 
     return (
@@ -70,7 +94,7 @@ const Phonics = () => {
                 <img className="thumbs-down" src={thumbsDown} alt="thumbs down, try again" />
             </div>
 
-            <h2>{playBtnBool > 0 ? "What do you hear?" : "Hit the play button to start"}</h2>
+            <h2>{playBtnMsgBool > 0 ? "What do you hear?" : "Hit the play button to start"}</h2>
 
             <div id="answers" className="answers">
                 {chosenChars.map(el => (
