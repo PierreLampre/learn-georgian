@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import StartButton from "./StartButton"
 import Letter from "./Letter"
-import { charArr } from "./charObjs"
+import Guess from "./Guess"
+import { charArr, no, yes } from "./charObjs"
 import thumbsUp from "./img/thumbs-up.svg"
 import thumbsDown from "./img/thumbs-down.svg"
 import "./phonics.css"
@@ -13,6 +14,8 @@ const Phonics = () => {
     const [playBtnMsgBool, setPlayBtnMsgBool] = useState(0);
     const [playBtnSoundBool, setPlayBtnSoundBool] = useState(false);
     const [currentTestSound, setCurrentTestSound] = useState(undefined);
+    const [guessedChar, setGuessedChar] = useState(undefined);
+
     let btnClassToggle;
 
     function add(letter) {
@@ -35,6 +38,7 @@ const Phonics = () => {
         setSetup(true);
         setChosenChars([]);
         setPlayBtnMsgBool(0);
+        setPlayBtnSoundBool(false);
     }
 
     function getRndInteger(min, max) {
@@ -50,7 +54,7 @@ const Phonics = () => {
 
             for (let i = 0; i < charArr.length; i++) {
                 if(randomLetter === charArr[i].char) {
-                    setCurrentTestSound(charArr[i].sound);
+                    setCurrentTestSound(charArr[i]);
                 }
             }
         }   
@@ -61,11 +65,19 @@ const Phonics = () => {
         generateRandomSound(playBtnSoundBool);
     }
 
-    console.log(currentTestSound);
+    console.log(guessedChar);
 
     function playBtnPlus() {
         setPlayBtnMsgBool(1);
-        currentTestSound.play();
+        currentTestSound.sound.play();
+    }
+
+    function checkAnswer() {
+        if(currentTestSound.char === guessedChar) {
+            yes.play();
+        } else {
+            no.play();
+        }
     }
 
     return (
@@ -98,12 +110,7 @@ const Phonics = () => {
 
             <div id="answers" className="answers">
                 {chosenChars.map(el => (
-                    <button 
-                        className={btnClassToggle}
-                        key={el + "1"}
-                    >
-                        {el}
-                    </button>
+                    <Guess key={el + "2"}btnClassToggle={btnClassToggle} char={el} set={setGuessedChar} checkAnswer={checkAnswer} />
                 ))}
             </div>
                 <button 

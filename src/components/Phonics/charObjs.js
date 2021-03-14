@@ -32,6 +32,8 @@ import ჭ_sound from "./audio/ჭ.wav";
 import ხ_sound from "./audio/ხ.wav";
 import ჯ_sound from "./audio/ჯ.wav";
 import ჰ_sound from "./audio/ჰ.wav";
+import yes_sound from "./audio/georgian-yes.wav"
+import no_sound from "./audio/georgian-no.wav"
 
 const ა = new Howl({
     src: [ა_sound]
@@ -163,6 +165,14 @@ const ჯ = new Howl({
 
 const ჰ = new Howl({
     src: [ჰ_sound]
+})
+
+export const yes = new Howl({
+    src: [yes_sound]
+})
+
+export const no = new Howl({
+    src: [no_sound]
 })
 
 export const charArr = [
