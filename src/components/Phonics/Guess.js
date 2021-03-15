@@ -1,16 +1,12 @@
 import React from 'react'
 
-const Guess = ({ btnClassToggle, char, set, checkAnswer }) => {
+const Guess = ({ btnClassToggle, char, guess }) => {
 
-    async function makeGuess() {
-        set(char);
-        await checkAnswer();
-    }
 
     return (
         <button
             className={btnClassToggle}
-            onClick={makeGuess}
+            onClick={() => guess(char)}
         >
             {char}
         </button>

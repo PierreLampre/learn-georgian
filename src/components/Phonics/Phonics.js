@@ -14,7 +14,6 @@ const Phonics = () => {
     const [playBtnMsgBool, setPlayBtnMsgBool] = useState(0);
     const [playBtnSoundBool, setPlayBtnSoundBool] = useState(false);
     const [currentTestSound, setCurrentTestSound] = useState(undefined);
-    const [guessedChar, setGuessedChar] = useState(undefined);
 
     let btnClassToggle;
 
@@ -65,20 +64,23 @@ const Phonics = () => {
         generateRandomSound(playBtnSoundBool);
     }
 
-    console.log(guessedChar);
-
     function playBtnPlus() {
         setPlayBtnMsgBool(1);
         currentTestSound.sound.play();
     }
 
-    function checkAnswer() {
-        if(currentTestSound.char === guessedChar) {
+    function guess(char) {
+        if(char === currentTestSound.char) {
             yes.play();
+            setPlayBtnMsgBool(0);
+            generateRandomSound(playBtnSoundBool);
         } else {
             no.play();
         }
     }
+
+    console.log(currentTestSound)
+
 
     return (
     <>
@@ -110,7 +112,7 @@ const Phonics = () => {
 
             <div id="answers" className="answers">
                 {chosenChars.map(el => (
-                    <Guess key={el + "2"}btnClassToggle={btnClassToggle} char={el} set={setGuessedChar} checkAnswer={checkAnswer} />
+                    <Guess key={el + "2"}btnClassToggle={btnClassToggle} char={el} guess={guess}/>
                 ))}
             </div>
                 <button 
