@@ -98,3 +98,53 @@
     justify-content: center;
     font-size: 24px;
 }
+
+.sm-screen {
+    display: none;
+}
+
+.lg-screen {
+    display: grid;
+}
+
+@media screen and (max-width: 635px) {
+
+    .key {
+        width: 30px;
+        height: 30px;
+    }
+
+.sm-screen {
+    display: grid;
+}
+
+.lg-screen {
+    display: none;
+}
+
+.keyboard {
+    width: 400px;
+    height: 200px;
+}
+
+.row {
+    justify-content: space-around;
+}
+
+.enter2 {
+    width: 90px;
+}
+
+.bs2 {
+    width: 90px;
+}
+
+.keyboard-output{
+    width: 380px;
+}
+
+.space {
+    width: 250px;
+}
+
+}

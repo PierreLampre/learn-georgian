@@ -9,13 +9,12 @@ const Typing = () => {
 
     function type(letter) {
         setMsgString([...msgString, letter]);
-        console.log("hey")
     }
 
     let joinedMsgString = msgString.join("")
 
     function backSpace() {
-        if(msgString.length > 1) {
+        if (msgString.length > 1) {
             joinedMsgString = joinedMsgString.substring(0, joinedMsgString.length - 1);
             setMsgString(joinedMsgString.split(""))
         } else {
@@ -25,8 +24,8 @@ const Typing = () => {
 
     return (
         <div className="typing-container">
-            <KeyboardOutput output={joinedMsgString}/>
-            <Keyboard type={type} backSpace={backSpace}/>
+            <KeyboardOutput output={joinedMsgString} />
+            <Keyboard type={type} backSpace={backSpace} />
         </div>
     )
 }
