@@ -108,7 +108,7 @@ const Phonics = () => {
                 <img className="thumbs-down" src={thumbsDown} alt="thumbs down, try again" />
             </div>
 
-            <h2>{playBtnMsgBool > 0 ? "What do you hear?" : "Hit the play button to start"}</h2>
+            <h2 className="game-msg">{playBtnMsgBool > 0 ? "What do you hear?" : "Hit the play button to start"}</h2>
 
             <div id="answers" className="answers">
                 {chosenChars.map(el => (

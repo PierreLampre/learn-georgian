@@ -1,0 +1,10 @@
+keyboard dimensions...
+
+container - width: 630 height: 210
+
+small key - 40 X 40
+
+tab, ctrl, alt - 62 X 40
+
+backspace - 78 X 40
+
